@@ -8,7 +8,7 @@ lib-y		:= bitops.o clear_user.o delay.o copy_from_user.o	\
 ifeq ($(CONFIG_KERNEL_MODE_NEON), y)
 obj-$(CONFIG_XOR_BLOCKS)	+= xor-neon.o
 CFLAGS_REMOVE_xor-neon.o	+= -mgeneral-regs-only
-CFLAGS_xor-neon.o		+= -ffreestanding
+CFLAGS_xor-neon.o		+= -ffreestanding -Wno-error=incompatible-pointer-types
 endif
 
 lib-$(CONFIG_ARCH_HAS_UACCESS_FLUSHCACHE) += uaccess_flushcache.o
